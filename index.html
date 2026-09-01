@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pra2media · Costa Sol · Agosto 2026</title>
+<meta name="description" content="Informe de resultados Meta + Google Ads — Costa Sol Vía a la Costa, Agosto 2026" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-soft: #12121a;
+    --bg-card: #16161f;
+    --bg-card-hover: #1c1c28;
+    --border: #23232f;
+    --border-strong: #2f2f3f;
+    --text: #f5f5f7;
+    --text-dim: #9a9aa8;
+    --text-muted: #6a6a78;
+
+    --pra-red: #E63946;
+    --pra-red-soft: rgba(230,57,70,0.12);
+
+    --green: #2cd980;
+    --yellow: #ffc83d;
+    --red: #ff4d5e;
+    --meta: #1877F2;
+    --google: #4285F4;
+
+    /* COSTA SOL — verde hoja + amarillo sol */
+    --brand-1: #22C55E;
+    --brand-2: #FBBF24;
+    --brand-3: #84CC16;
+    --brand-grad: linear-gradient(135deg, #22C55E 0%, #FBBF24 100%);
+    --brand-glow: rgba(34,197,94,0.20);
+    --brand-soft: rgba(34,197,94,0.08);
+    --brand-yellow-glow: rgba(251,191,36,0.20);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.5;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.015) 1px, transparent 0);
+    background-size: 4px 4px; pointer-events: none; z-index: 0;
+  }
+
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,15,0.75);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 14px; }
+  .nav-brand img { height: 22px; width: auto; opacity: 0.95; }
+  .nav-brand-dot {
+    width: 7px; height: 7px; background: var(--pra-red); border-radius: 50%;
+    box-shadow: 0 0 12px var(--pra-red);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(0.8); } }
+  .nav-links { display: flex; gap: 22px; font-size: 13px; color: var(--text-dim); }
+  .nav-links a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--brand-1); }
+  .nav-client {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-muted); padding: 5px 12px;
+    border: 1px solid var(--border-strong); border-radius: 999px;
+  }
+
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+  .hero { padding: 130px 0 70px; position: relative; }
+  .hero-bg {
+    position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, var(--brand-glow) 0%, var(--brand-yellow-glow) 40%, transparent 70%);
+    filter: blur(90px); pointer-events: none; z-index: -1;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--brand-1); background: var(--brand-soft);
+    border: 1px solid var(--brand-glow);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(44px, 6.5vw, 92px); line-height: 1.05;
+    letter-spacing: -0.035em; font-weight: 600; margin-bottom: 20px;
+    padding-bottom: 0.05em;
+  }
+  .hero h1 .accent {
+    background: var(--brand-grad); -webkit-background-clip: text;
+    background-clip: text; color: transparent; font-style: italic;
+    display: inline-block;
+    padding: 0.05em 0.15em 0.1em 0.05em;
+    margin: -0.05em -0.1em -0.1em -0.05em;
+  }
+  .hero-sub { font-size: 18px; color: var(--text-dim); max-width: 720px; margin-bottom: 40px; }
+  .hero-meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .hero-meta span strong { color: var(--text); font-weight: 500; margin-left: 6px; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 48px; }
+  .kpi {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px; transition: all 0.25s;
+  }
+  .kpi:hover { border-color: var(--brand-1); background: var(--bg-card-hover); transform: translateY(-2px); }
+  .kpi-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-muted); margin-bottom: 10px;
+  }
+  .kpi-value { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); }
+  .kpi-value.accent { background: var(--brand-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .kpi-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--text-muted); margin-top: 8px;
+  }
+  .kpi-delta { font-size: 11px; font-family: 'JetBrains Mono', monospace; margin-top: 6px; }
+  .kpi-delta.up { color: var(--green); }
+  .kpi-delta.down { color: var(--red); }
+  .kpi-delta.good-down { color: var(--green); }
+
+  section { padding: 80px 0; position: relative; }
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--brand-1); margin-bottom: 14px;
+  }
+  .section-title {
+    font-size: clamp(30px, 3.5vw, 46px); line-height: 1.15;
+    letter-spacing: -0.03em; font-weight: 600; margin-bottom: 20px;
+    padding-bottom: 0.08em;
+  }
+  .section-title .accent {
+    background: var(--brand-grad); -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+    display: inline-block;
+    padding: 0.05em 0.15em 0.1em 0.05em;
+    margin: -0.05em -0.1em -0.1em -0.05em;
+  }
+  .section-sub { font-size: 16px; color: var(--text-dim); max-width: 720px; margin-bottom: 40px; }
+
+  /* CHANNEL SPLIT */
+  .channel-split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 40px; }
+  .channel-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 18px; padding: 28px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .channel-head { display: flex; align-items: center; gap: 12px; }
+  .channel-head-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .channel-head-dot.meta { background: var(--meta); box-shadow: 0 0 12px var(--meta); }
+  .channel-head-dot.google { background: var(--google); box-shadow: 0 0 12px var(--google); }
+  .channel-head-name { font-size: 16px; font-weight: 600; }
+  .channel-head-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-muted); margin-left: auto;
+    padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px;
+  }
+  .channel-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .channel-num-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text-muted); margin-bottom: 4px;
+  }
+  .channel-num-value { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+
+  /* VERDICT */
+  .verdict {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-soft) 100%);
+    border: 1px solid var(--border); border-radius: 24px;
+    padding: 44px;
+    display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .verdict::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
+    filter: blur(60px);
+  }
+  .verdict-grade {
+    font-size: 120px; font-weight: 600; line-height: 1;
+    letter-spacing: -0.05em;
+    background: var(--brand-grad); -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+    position: relative; z-index: 1;
+  }
+  .verdict-body { position: relative; z-index: 1; }
+  .verdict-title { font-size: 22px; font-weight: 600; margin-bottom: 12px; line-height: 1.3; }
+  .verdict-text { color: var(--text-dim); font-size: 15px; line-height: 1.7; }
+
+  /* MoM COMPARISON */
+  .mom-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 32px; }
+  .mom-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px;
+  }
+  .mom-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-muted); margin-bottom: 12px;
+  }
+  .mom-values { display: flex; align-items: baseline; gap: 12px; }
+  .mom-current { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; }
+  .mom-prev {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--text-muted); text-decoration: line-through;
+  }
+  .mom-delta {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; margin-top: 8px;
+    padding: 3px 8px; border-radius: 6px;
+  }
+  .mom-delta.up { color: var(--green); background: rgba(44,217,128,0.1); }
+  .mom-delta.down { color: var(--red); background: rgba(255,77,94,0.1); }
+  .mom-delta.good-down { color: var(--green); background: rgba(44,217,128,0.1); }
+
+  /* CHANNEL TABS */
+  .channel-tabs {
+    display: flex; gap: 8px; margin-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  .channel-tab {
+    padding: 14px 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text-muted); background: none; border: none;
+    border-bottom: 2px solid transparent; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .channel-tab:hover { color: var(--text); }
+  .channel-tab.active { color: var(--brand-1); border-bottom-color: var(--brand-1); }
+  .channel-tab .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+  .channel-tab .dot.meta { background: var(--meta); }
+  .channel-tab .dot.google { background: var(--google); }
+  .channel-panel { display: none; }
+  .channel-panel.active { display: block; animation: fadeIn 0.3s; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* DATA TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .data-table th {
+    text-align: left; padding: 14px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text-muted); font-weight: 500;
+    background: var(--bg-soft); border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 14px 16px; font-size: 13px;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .data-table td.num { text-align: right; font-family: 'JetBrains Mono', monospace; }
+  .data-table td.name { font-weight: 500; color: var(--text); }
+  .data-table td .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .data-table td .badge.good { color: var(--green); background: rgba(44,217,128,0.1); }
+  .data-table td .badge.warn { color: var(--yellow); background: rgba(255,200,61,0.1); }
+  .data-table td .badge.bad { color: var(--red); background: rgba(255,77,94,0.1); }
+  .data-table td .badge.brand { color: var(--brand-1); background: var(--brand-soft); }
+
+  /* CREATIVES */
+  .creatives { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .creative {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden; transition: all 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .creative:hover { border-color: var(--brand-1); transform: translateY(-3px); }
+  .creative-media { position: relative; width: 100%; aspect-ratio: 1 / 1; background: var(--bg-soft); overflow: hidden; }
+  .creative-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .creative-media.video img { filter: blur(0px); }
+  .creative-media.video-lowres img { filter: blur(12px) brightness(0.6); transform: scale(1.1); }
+  .creative-media.video-lowres::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 100%);
+    opacity: 0.15; z-index: 0;
+  }
+  .creative-badge {
+    position: absolute; top: 12px; left: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text); background: rgba(10,10,15,0.85); backdrop-filter: blur(8px);
+    padding: 5px 10px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12); z-index: 2;
+  }
+  .creative-rank {
+    position: absolute; top: 12px; right: 12px;
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    color: #0a0a0f; background: var(--brand-1);
+    border-radius: 50%; z-index: 2;
+  }
+  .creative-rank.star {
+    background: var(--brand-2); color: #0a0a0f;
+    box-shadow: 0 0 12px rgba(251,191,36,0.5);
+  }
+  .video-overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+    text-decoration: none; color: var(--text);
+    transition: background 0.2s;
+    z-index: 1;
+  }
+  .video-overlay:hover { background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); }
+  .play-btn {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+  }
+  .video-overlay:hover .play-btn { transform: scale(1.08); }
+  .play-btn svg { width: 24px; height: 24px; fill: #0a0a0f; margin-left: 3px; }
+  .creative-body { padding: 16px; display: flex; flex-direction: column; flex: 1; gap: 12px; }
+  .creative-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+  .creative-copy {
+    font-size: 13px; line-height: 1.45; color: var(--text-dim);
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .creative-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; padding-top: 12px; border-top: 1px solid var(--border);
+    margin-top: auto;
+  }
+  .creative-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px;
+  }
+  .creative-stat-value { font-size: 14px; font-weight: 600; }
+  .creative-links { display: flex; gap: 8px; padding: 0 16px 14px; }
+  .creative-link {
+    flex: 1; text-align: center; padding: 8px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text-dim); background: var(--bg-soft);
+    border: 1px solid var(--border); border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .creative-link:hover { color: var(--brand-1); border-color: var(--brand-1); background: var(--brand-soft); }
+  .creative-link.primary { color: #0a0a0f; background: var(--brand-1); border-color: var(--brand-1); font-weight: 600; }
+  .creative-link.primary:hover { background: var(--brand-2); border-color: var(--brand-2); color: #0a0a0f; }
+
+  /* CHARTS */
+  .chart-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+  .chart-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .chart-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--text-muted); margin-bottom: 20px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .chart-wrap { position: relative; height: 300px; }
+  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .charts-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+
+  /* FUNNEL */
+  .funnel { display: flex; flex-direction: column; gap: 6px; }
+  .funnel-step {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 28px;
+    display: grid; grid-template-columns: 1fr auto auto; gap: 24px; align-items: center;
+    position: relative;
+  }
+  .funnel-step-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-dim);
+  }
+  .funnel-step-value { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; }
+  .funnel-step-conv {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--brand-1);
+    min-width: 90px; text-align: right;
+  }
+
+  /* RECOMMENDATIONS */
+  .recs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .rec {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-left: 3px solid var(--brand-1);
+    border-radius: 12px; padding: 22px;
+  }
+  .rec.green { border-left-color: var(--green); }
+  .rec.yellow { border-left-color: var(--yellow); }
+  .rec.red { border-left-color: var(--red); }
+  .rec-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--brand-1); margin-bottom: 8px;
+  }
+  .rec.green .rec-tag { color: var(--green); }
+  .rec.yellow .rec-tag { color: var(--yellow); }
+  .rec.red .rec-tag { color: var(--red); }
+  .rec-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .rec-text { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+  footer { padding: 60px 0 40px; border-top: 1px solid var(--border); margin-top: 60px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand img { height: 28px; opacity: 0.9; }
+  .footer-brand-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted);
+  }
+  .footer-brand-text strong { color: var(--pra-red); }
+  .footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 900px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .mom-grid { grid-template-columns: repeat(2, 1fr); }
+    .channel-split { grid-template-columns: 1fr; }
+    .verdict { grid-template-columns: 1fr; text-align: center; padding: 32px; }
+    .verdict-grade { font-size: 90px; }
+    .charts-grid, .charts-grid-3 { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .data-table { font-size: 11px; }
+    .data-table th, .data-table td { padding: 10px 12px; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 20px; }
+    .hero { padding: 110px 0 50px; }
+    section { padding: 60px 0; }
+    .kpi-grid, .mom-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .kpi { padding: 16px; }
+    .kpi-value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <img src="assets/pra2media-blanco.png" alt="Pra2media" />
+    <span class="nav-brand-dot"></span>
+  </div>
+  <div class="nav-links">
+    <a href="#resumen">Resumen</a>
+    <a href="#cierre">Cierre</a>
+    <a href="#comparativo">Mes anterior</a>
+    <a href="#canales">Canales</a>
+    <a href="#creativos">Creativos</a>
+    <a href="#audiencia">Audiencia</a>
+    <a href="#recomendaciones">Recomendaciones</a>
+  </div>
+  <div class="nav-client">Costa Sol · Ago 2026</div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-tag"><span>●</span> Reporte mensual · Agosto 2026</div>
+    <h1>Costa Sol · <span class="accent">Agosto</span> del año.</h1>
+    <p class="hero-sub">
+      Mes récord: <strong style="color:var(--text)">944 leads en Meta</strong> con menor gasto que julio y CPL en su mínimo del trimestre. Google aporta <strong style="color:var(--text)">87 conversiones</strong> complementarias en Search y PMAX. Todo el detalle abajo.
+    </p>
+    <div class="hero-meta">
+      <span>Período <strong>01 – 31 AGO 2026</strong></span>
+      <span>Canales <strong>META + GOOGLE</strong></span>
+      <span>Moneda <strong>USD</strong></span>
+      <span>Cuenta <strong>CostaSol Ads</strong></span>
+    </div>
+
+    <div class="kpi-grid" id="resumen">
+      <div class="kpi">
+        <div class="kpi-label">Inversión total</div>
+        <div class="kpi-value accent">$7,680</div>
+        <div class="kpi-sub">Meta $6,534 · Google $1,146</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Resultados totales</div>
+        <div class="kpi-value">1,031</div>
+        <div class="kpi-sub">944 leads Meta · 87 conv Google</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Costo por resultado</div>
+        <div class="kpi-value">$7.45</div>
+        <div class="kpi-sub">Blended Meta + Google</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Alcance Meta</div>
+        <div class="kpi-value">560 K</div>
+        <div class="kpi-sub">1.79 M impresiones · Freq 3.19</div>
+      </div>
+    </div>
+
+    <div class="channel-split">
+      <div class="channel-card">
+        <div class="channel-head">
+          <span class="channel-head-dot meta"></span>
+          <span class="channel-head-name">Meta Ads</span>
+          <span class="channel-head-tag">Lead Gen · WhatsApp · Video</span>
+        </div>
+        <div class="channel-nums">
+          <div>
+            <div class="channel-num-label">Inversión</div>
+            <div class="channel-num-value">$6,534</div>
+          </div>
+          <div>
+            <div class="channel-num-label">Leads</div>
+            <div class="channel-num-value">944</div>
+          </div>
+          <div>
+            <div class="channel-num-label">CPL</div>
+            <div class="channel-num-value">$6.92</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-head">
+          <span class="channel-head-dot google"></span>
+          <span class="channel-head-name">Google Ads</span>
+          <span class="channel-head-tag">Search + PMAX</span>
+        </div>
+        <div class="channel-nums">
+          <div>
+            <div class="channel-num-label">Inversión</div>
+            <div class="channel-num-value">$1,146</div>
+          </div>
+          <div>
+            <div class="channel-num-label">Conversiones</div>
+            <div class="channel-num-value">87</div>
+          </div>
+          <div>
+            <div class="channel-num-label">Costo/conv</div>
+            <div class="channel-num-value">$13.17</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-tag">// Veredicto del mes</div>
+    <h2 class="section-title">Un mes <span class="accent">récord</span>.</h2>
+    <div class="verdict">
+      <div class="verdict-grade">A−</div>
+      <div class="verdict-body">
+        <div class="verdict-title">Volumen récord de leads (1,504 · 115.7% de la meta), pero el funnel comercial no logró convertir ese volumen en visitas.</div>
+        <div class="verdict-text">
+          <strong style="color:var(--text)">Meta hizo su trabajo</strong>: 944 leads (-25% de CPL vs julio) más 87 conversiones de Google = 1,504 leads totales del mes, superando la meta en +204. El anuncio <strong style="color:var(--text)">Meeting - agosto Wine & Cream</strong> fue la estrella (198 leads con solo $196, CPL $0.99). <strong style="color:var(--red)">La brecha está más abajo en el embudo</strong>: P's del mes (53.8%), P. visitantes (74.4%) y primeras visitas (71.7%) quedaron bajo meta. Septiembre debe enfocarse en <strong style="color:var(--brand-1)">calidad del lead</strong> y agendamiento de visita, no solo en volumen. Alerta paralela: campañas de <strong style="color:var(--text)">WhatsApp</strong> con CPL sobre $54 — revisar destino y flujo.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cierre">
+  <div class="container">
+    <div class="section-tag">// Cierre comercial de agosto</div>
+    <h2 class="section-title">Del lead al <span class="accent">prospecto</span>.</h2>
+    <p class="section-sub">
+      Así cerró agosto: la <strong style="color:var(--text)">generación de leads</strong> y los <strong style="color:var(--text)">P's acumulados</strong> superaron la meta, pero el funnel no logró transformar ese volumen en suficientes <strong style="color:var(--text)">P's del mes, P. visitantes y primeras visitas</strong>.
+    </p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>KPI</th>
+          <th class="num">Cierre agosto</th>
+          <th class="num">Meta</th>
+          <th class="num">Cumplimiento</th>
+          <th class="num">Brecha final</th>
+          <th class="num">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Leads del mes</td>
+          <td class="num"><strong>1,504</strong></td>
+          <td class="num">1,300</td>
+          <td class="num" style="color:var(--green); font-weight:600">115.7%</td>
+          <td class="num" style="color:var(--green)">+204</td>
+          <td class="num"><span class="badge good">✓ Superada</span></td>
+        </tr>
+        <tr>
+          <td class="name">P's del mes</td>
+          <td class="num"><strong>63</strong></td>
+          <td class="num">117</td>
+          <td class="num" style="color:var(--red); font-weight:600">53.8%</td>
+          <td class="num" style="color:var(--red)">−54</td>
+          <td class="num"><span class="badge bad">● No cumplida</span></td>
+        </tr>
+        <tr>
+          <td class="name">P's acumulados</td>
+          <td class="num"><strong>125</strong></td>
+          <td class="num">117</td>
+          <td class="num" style="color:var(--green); font-weight:600">106.8%</td>
+          <td class="num" style="color:var(--green)">+8</td>
+          <td class="num"><span class="badge good">✓ Superada</span></td>
+        </tr>
+        <tr>
+          <td class="name">P. visitantes</td>
+          <td class="num"><strong>67</strong></td>
+          <td class="num">90</td>
+          <td class="num" style="color:var(--yellow); font-weight:600">74.4%</td>
+          <td class="num" style="color:var(--yellow)">−23</td>
+          <td class="num"><span class="badge warn">● No cumplida</span></td>
+        </tr>
+        <tr>
+          <td class="name">Visitas por primera vez</td>
+          <td class="num"><strong>104</strong></td>
+          <td class="num">145</td>
+          <td class="num" style="color:var(--red); font-weight:600">71.7%</td>
+          <td class="num" style="color:var(--red)">−41</td>
+          <td class="num"><span class="badge bad">● No cumplida</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="section-sub" style="margin-top:24px; font-size:14px">
+      <strong style="color:var(--text)">Lectura:</strong> el tope del embudo (leads) está sobre-cumplido, pero la conversión a prospecto y a visita física está por debajo. El esfuerzo de septiembre debe enfocarse en <strong style="color:var(--brand-1)">calidad del lead</strong> y <strong style="color:var(--brand-1)">agendamiento efectivo de visita</strong>, no solo en volumen.
+    </p>
+  </div>
+</section>
+
+<section id="comparativo">
+  <div class="container">
+    <div class="section-tag">// Comparativo Julio vs Agosto (Meta)</div>
+    <h2 class="section-title">Menos gasto, <span class="accent">más leads</span>.</h2>
+    <p class="section-sub">Agosto es el mejor mes desde el inicio del trimestre. Todas las métricas clave mejoraron en simultáneo.</p>
+    <div class="mom-grid">
+      <div class="mom-card">
+        <div class="mom-label">Inversión</div>
+        <div class="mom-values">
+          <span class="mom-current">$6,534</span>
+          <span class="mom-prev">$7,171</span>
+        </div>
+        <div class="mom-delta good-down">▼ -8.9%</div>
+      </div>
+      <div class="mom-card">
+        <div class="mom-label">Leads</div>
+        <div class="mom-values">
+          <span class="mom-current">944</span>
+          <span class="mom-prev">779</span>
+        </div>
+        <div class="mom-delta up">▲ +21.2%</div>
+      </div>
+      <div class="mom-card">
+        <div class="mom-label">CPL</div>
+        <div class="mom-values">
+          <span class="mom-current">$6.92</span>
+          <span class="mom-prev">$9.21</span>
+        </div>
+        <div class="mom-delta good-down">▼ -24.8%</div>
+      </div>
+      <div class="mom-card">
+        <div class="mom-label">Alcance</div>
+        <div class="mom-values">
+          <span class="mom-current">560 K</span>
+          <span class="mom-prev">386 K</span>
+        </div>
+        <div class="mom-delta up">▲ +45.1%</div>
+      </div>
+      <div class="mom-card">
+        <div class="mom-label">Impresiones</div>
+        <div class="mom-values">
+          <span class="mom-current">1.79 M</span>
+          <span class="mom-prev">1.53 M</span>
+        </div>
+        <div class="mom-delta up">▲ +16.8%</div>
+      </div>
+      <div class="mom-card">
+        <div class="mom-label">CTR</div>
+        <div class="mom-values">
+          <span class="mom-current">2.26%</span>
+          <span class="mom-prev">2.15%</span>
+        </div>
+        <div class="mom-delta up">▲ +5.0%</div>
+      </div>
+      <div class="mom-card">
+        <div class="mom-label">CPC</div>
+        <div class="mom-values">
+          <span class="mom-current">$0.16</span>
+          <span class="mom-prev">$0.22</span>
+        </div>
+        <div class="mom-delta good-down">▼ -25.7%</div>
+      </div>
+      <div class="mom-card">
+        <div class="mom-label">Frecuencia</div>
+        <div class="mom-values">
+          <span class="mom-current">3.19</span>
+          <span class="mom-prev">3.96</span>
+        </div>
+        <div class="mom-delta good-down">▼ -19.5%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="canales">
+  <div class="container">
+    <div class="section-tag">// Detalle por canal</div>
+    <h2 class="section-title">Meta y Google, <span class="accent">cada uno su rol</span>.</h2>
+    <p class="section-sub">Meta lidera volumen y descubrimiento. Google captura demanda con intención de búsqueda directa.</p>
+
+    <div class="channel-tabs">
+      <button class="channel-tab active" data-panel="meta"><span class="dot meta"></span>Meta Ads (9 campañas)</button>
+      <button class="channel-tab" data-panel="google"><span class="dot google"></span>Google Ads (3 campañas)</button>
+    </div>
+
+    <div class="channel-panel active" data-panel="meta">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Campaña</th>
+            <th class="num">Inversión</th>
+            <th class="num">Leads</th>
+            <th class="num">CPL</th>
+            <th class="num">CTR</th>
+            <th class="num">Freq</th>
+            <th class="num">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">(PM) - Leads - Power Bi - Copia</td><td class="num">$1,340.90</td><td class="num">193</td><td class="num">$6.95</td><td class="num">2.22%</td><td class="num">1.95</td><td class="num"><span class="badge good">Óptimo</span></td></tr>
+          <tr><td class="name">CostaSol - Leads - Julio</td><td class="num">$1,164.32</td><td class="num">87</td><td class="num">$13.38</td><td class="num">1.04%</td><td class="num">3.01</td><td class="num"><span class="badge warn">Iterar</span></td></tr>
+          <tr><td class="name">(PM) - WhatsApp - varios conjuntos</td><td class="num">$1,091.42</td><td class="num">20</td><td class="num">$54.57</td><td class="num">2.08%</td><td class="num">2.84</td><td class="num"><span class="badge bad">Revisar</span></td></tr>
+          <tr><td class="name">FORM | COSTA SOL | 21-08 | VIDEOS</td><td class="num">$759.27</td><td class="num">77</td><td class="num">$9.86</td><td class="num">1.90%</td><td class="num">2.20</td><td class="num"><span class="badge good">Bien</span></td></tr>
+          <tr><td class="name">Meeting_2026 - Copia</td><td class="num">$689.48</td><td class="num">463</td><td class="num">$1.49</td><td class="num">4.96%</td><td class="num">2.51</td><td class="num"><span class="badge brand">Estrella</span></td></tr>
+          <tr><td class="name">WhatsApp_Noviembre</td><td class="num">$622.70</td><td class="num">8</td><td class="num">$77.84</td><td class="num">1.49%</td><td class="num">2.28</td><td class="num"><span class="badge bad">Pausar</span></td></tr>
+          <tr><td class="name">Costasol_Leads_Julio</td><td class="num">$523.28</td><td class="num">73</td><td class="num">$7.17</td><td class="num">2.38%</td><td class="num">2.19</td><td class="num"><span class="badge good">Bien</span></td></tr>
+          <tr><td class="name">FORM | COSTA SOL | 21-08 | Estático</td><td class="num">$217.01</td><td class="num">10</td><td class="num">$21.70</td><td class="num">1.60%</td><td class="num">2.70</td><td class="num"><span class="badge warn">Iterar</span></td></tr>
+          <tr><td class="name">(PM) - Lead Magnet</td><td class="num">$125.62</td><td class="num">13</td><td class="num">$9.66</td><td class="num">1.87%</td><td class="num">2.75</td><td class="num"><span class="badge good">Bien</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="channel-panel" data-panel="google">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Campaña</th>
+            <th class="num">Tipo</th>
+            <th class="num">Inversión</th>
+            <th class="num">Clics</th>
+            <th class="num">CTR</th>
+            <th class="num">Conv.</th>
+            <th class="num">Costo/conv</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Search - Casas y departamentos</td><td class="num">Search</td><td class="num">$737.41</td><td class="num">1,209</td><td class="num">9.57%</td><td class="num">40</td><td class="num">$18.44</td></tr>
+          <tr><td class="name">202502 - CostaSol - PMAX - LEADS</td><td class="num">Performance Max</td><td class="num">$305.34</td><td class="num">6,117</td><td class="num">1.81%</td><td class="num">35</td><td class="num">$8.72</td></tr>
+          <tr><td class="name">Search - Terrenos</td><td class="num">Search</td><td class="num">$103.06</td><td class="num">387</td><td class="num">14.24%</td><td class="num">12</td><td class="num">$8.59</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:40px">
+        <h3 class="chart-title" style="margin-bottom:16px">Top 10 palabras clave por clics</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th class="num">Campaña</th>
+              <th class="num">Clics</th>
+              <th class="num">CTR</th>
+              <th class="num">Coste</th>
+              <th class="num">Conv.</th>
+              <th class="num">Costo/conv</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="name">casas en venta guayaquil</td><td class="num">Casas y dpts</td><td class="num">688</td><td class="num">11.12%</td><td class="num">$403.50</td><td class="num">19</td><td class="num">$21.24</td></tr>
+            <tr><td class="name">Costa sol <span class="badge brand">Marca</span></td><td class="num">Terrenos</td><td class="num">182</td><td class="num">36.77%</td><td class="num">$15.47</td><td class="num">2</td><td class="num">$7.73</td></tr>
+            <tr><td class="name">terrenos en venta</td><td class="num">Terrenos</td><td class="num">117</td><td class="num">9.26%</td><td class="num">$40.40</td><td class="num">5</td><td class="num">$8.08</td></tr>
+            <tr><td class="name">departamentos en alquiler guayaquil</td><td class="num">Casas y dpts</td><td class="num">98</td><td class="num">8.31%</td><td class="num">$65.69</td><td class="num">4</td><td class="num">$16.42</td></tr>
+            <tr><td class="name">casas en samborondon</td><td class="num">Casas y dpts</td><td class="num">76</td><td class="num">10.67%</td><td class="num">$36.52</td><td class="num">1</td><td class="num">$36.52</td></tr>
+            <tr><td class="name">casa</td><td class="num">Casas y dpts</td><td class="num">55</td><td class="num">5.53%</td><td class="num">$26.17</td><td class="num">1</td><td class="num">$26.17</td></tr>
+            <tr><td class="name">venta de casas</td><td class="num">Casas y dpts</td><td class="num">39</td><td class="num">6.28%</td><td class="num">$20.66</td><td class="num">1</td><td class="num">$20.66</td></tr>
+            <tr><td class="name">vivienda</td><td class="num">Casas y dpts</td><td class="num">36</td><td class="num">4.89%</td><td class="num">$30.24</td><td class="num">1</td><td class="num">$30.24</td></tr>
+            <tr><td class="name">urbanización costa sol <span class="badge brand">Marca</span></td><td class="num">Casas y dpts</td><td class="num">31</td><td class="num">31.31%</td><td class="num">$1.73</td><td class="num">2</td><td class="num">$0.86</td></tr>
+            <tr><td class="name">propiedades inmobiliarias</td><td class="num">Terrenos</td><td class="num">30</td><td class="num">9.87%</td><td class="num">$20.03</td><td class="num">1</td><td class="num">$20.03</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:40px">
+        <h3 class="chart-title" style="margin-bottom:6px">Comparativa de subastas (competencia directa)</h3>
+        <p class="chart-sub" style="margin-bottom:16px">Cuota de impresiones vs otros proyectos inmobiliarios en Google</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Dominio</th>
+              <th class="num">Cuota impresiones</th>
+              <th class="num">Superposición</th>
+              <th class="num">Posic. superior</th>
+              <th class="num">Parte sup. página</th>
+              <th class="num">Ranking superior</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="name">casalaguna.com.ec</td><td class="num">20.81%</td><td class="num">38.84%</td><td class="num">64.40%</td><td class="num">66.90%</td><td class="num">8.96%</td></tr>
+            <tr><td class="name">plusvalia.com</td><td class="num">12.71%</td><td class="num">11.28%</td><td class="num">53.09%</td><td class="num">84.80%</td><td class="num">11.23%</td></tr>
+            <tr style="background:var(--brand-soft)"><td class="name"><span class="badge brand">Nosotros</span> costasol</td><td class="num"><strong>11.95%</strong></td><td class="num">—</td><td class="num">—</td><td class="num">62.40%</td><td class="num">—</td></tr>
+            <tr><td class="name">albadelbosque.com.ec</td><td class="num">&lt; 10%</td><td class="num">12.25%</td><td class="num">40.54%</td><td class="num">68.20%</td><td class="num">11.35%</td></tr>
+            <tr><td class="name">jardinesparquemagno.com</td><td class="num">&lt; 10%</td><td class="num">8.40%</td><td class="num">33.74%</td><td class="num">49.01%</td><td class="num">11.61%</td></tr>
+            <tr><td class="name">narcisaclub.com</td><td class="num">&lt; 10%</td><td class="num">5.66%</td><td class="num">49.57%</td><td class="num">70.82%</td><td class="num">11.61%</td></tr>
+            <tr><td class="name">arboletta.com</td><td class="num">&lt; 10%</td><td class="num">6.15%</td><td class="num">27.16%</td><td class="num">52.75%</td><td class="num">11.75%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="creativos">
+  <div class="container">
+    <div class="section-tag">// Top 5 creativos por inversión + estrella por eficiencia</div>
+    <h2 class="section-title">Los anuncios que <span class="accent">movieron la aguja</span>.</h2>
+    <p class="section-sub">Top 5 por inversión (ranking dorado #1–5) + 1 estrella dorada #6 con el mejor CPL del mes ($0.99).</p>
+
+    <div class="creatives">
+
+      <div class="creative">
+        <div class="creative-media video-lowres">
+          <span class="creative-badge">Video</span>
+          <span class="creative-rank">1</span>
+          <img src="assets/ads/ad1-julio-v2-video.jpg" alt="Ads 1 - Julio v2 - Copia" />
+          <a href="https://www.facebook.com/106396447369198/videos/2108625533414490" target="_blank" class="video-overlay" aria-label="Ver video">
+            <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </div>
+        <div class="creative-body">
+          <div class="creative-name">Ads 1 - Julio v2 - Copia</div>
+          <div class="creative-copy">Abrir la puerta de tu nuevo hogar puede suceder antes de lo que crees. Casas de entrega inmediata + financiamiento hasta 35 meses.</div>
+          <div class="creative-stats">
+            <div><div class="creative-stat-label">Inv.</div><div class="creative-stat-value">$1,146</div></div>
+            <div><div class="creative-stat-label">Leads</div><div class="creative-stat-value">183</div></div>
+            <div><div class="creative-stat-label">CPL</div><div class="creative-stat-value">$6.26</div></div>
+          </div>
+        </div>
+        <div class="creative-links">
+          <a href="https://www.facebook.com/106396447369198/videos/2108625533414490" target="_blank" class="creative-link">▶ Video</a>
+          <a href="https://www.facebook.com/106396447369198/posts/2108625533414490" target="_blank" class="creative-link primary">Ver anuncio</a>
+        </div>
+      </div>
+
+      <div class="creative">
+        <div class="creative-media">
+          <span class="creative-badge">Imagen</span>
+          <span class="creative-rank">2</span>
+          <img src="assets/ads/ad2-visita-guiada.jpg" alt="Agenda una visita guiada - CostaSol" />
+        </div>
+        <div class="creative-body">
+          <div class="creative-name">CostaSol - Leads - Julio (Visita guiada)</div>
+          <div class="creative-copy">Encuentra la paz y el confort en espacios pensados para tu bienestar. Reserva tu hogar ideal hoy mismo.</div>
+          <div class="creative-stats">
+            <div><div class="creative-stat-label">Inv.</div><div class="creative-stat-value">$993</div></div>
+            <div><div class="creative-stat-label">Leads</div><div class="creative-stat-value">72</div></div>
+            <div><div class="creative-stat-label">CPL</div><div class="creative-stat-value">$13.79</div></div>
+          </div>
+        </div>
+        <div class="creative-links">
+          <a href="https://www.facebook.com/106396447369198/posts/1699143008882009" target="_blank" class="creative-link primary">Ver anuncio</a>
+        </div>
+      </div>
+
+      <div class="creative">
+        <div class="creative-media">
+          <span class="creative-badge">Video</span>
+          <span class="creative-rank">3</span>
+          <img src="assets/ads/ad3-form-video.jpg" alt="FORM COSTA SOL 21-08 - Agenda visita" />
+          <a href="https://www.facebook.com/106396447369198/videos/1531641668286764" target="_blank" class="video-overlay" aria-label="Ver video">
+            <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </div>
+        <div class="creative-body">
+          <div class="creative-name">FORM | COSTA SOL | 21-08</div>
+          <div class="creative-copy">Agenda una visita. Casas de entrega inmediata en CostaSol con financiamiento hasta 35 meses. Habla con un asesor.</div>
+          <div class="creative-stats">
+            <div><div class="creative-stat-label">Inv.</div><div class="creative-stat-value">$617</div></div>
+            <div><div class="creative-stat-label">Leads</div><div class="creative-stat-value">65</div></div>
+            <div><div class="creative-stat-label">CPL</div><div class="creative-stat-value">$9.49</div></div>
+          </div>
+        </div>
+        <div class="creative-links">
+          <a href="https://www.facebook.com/106396447369198/videos/1531641668286764" target="_blank" class="creative-link">▶ Video</a>
+          <a href="https://www.facebook.com/106396447369198/posts/1743929424403367" target="_blank" class="creative-link primary">Ver anuncio</a>
+        </div>
+      </div>
+
+      <div class="creative">
+        <div class="creative-media video-lowres">
+          <span class="creative-badge">Video · WhatsApp</span>
+          <span class="creative-rank">4</span>
+          <img src="assets/ads/ad4-martita-video.jpg" alt="Martita entrega inmediata - CostaSol" />
+          <a href="https://www.facebook.com/106396447369198/videos/2314521039289902" target="_blank" class="video-overlay" aria-label="Ver video">
+            <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </div>
+        <div class="creative-body">
+          <div class="creative-name">Martita_entrega_inmediata - Copia 6</div>
+          <div class="creative-copy">Recorrido por una propiedad Villa Emma con diseño y comodidad. CTA WhatsApp — CPL alto porque el destino no está optimizado.</div>
+          <div class="creative-stats">
+            <div><div class="creative-stat-label">Inv.</div><div class="creative-stat-value">$498</div></div>
+            <div><div class="creative-stat-label">Leads</div><div class="creative-stat-value">6</div></div>
+            <div><div class="creative-stat-label">CPL</div><div class="creative-stat-value">$82.99</div></div>
+          </div>
+        </div>
+        <div class="creative-links">
+          <a href="https://www.facebook.com/106396447369198/videos/2314521039289902" target="_blank" class="creative-link">▶ Video</a>
+          <a href="https://www.facebook.com/106396447369198/posts/2314521039289902" target="_blank" class="creative-link primary">Ver anuncio</a>
+        </div>
+      </div>
+
+      <div class="creative">
+        <div class="creative-media video-lowres">
+          <span class="creative-badge">Video</span>
+          <span class="creative-rank">5</span>
+          <img src="assets/ads/ad5-villa-emma-video.jpg" alt="Villa Emma - CostaSol" />
+          <a href="https://www.facebook.com/106396447369198/videos/1936205956927810" target="_blank" class="video-overlay" aria-label="Ver video">
+            <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </div>
+        <div class="creative-body">
+          <div class="creative-name">Costasol_Capi (Villa Emma)</div>
+          <div class="creative-copy">Villa Emma combina amplitud, diseño y el estilo de vida que solo CostaSol puede ofrecer. Ven a conocerla.</div>
+          <div class="creative-stats">
+            <div><div class="creative-stat-label">Inv.</div><div class="creative-stat-value">$341</div></div>
+            <div><div class="creative-stat-label">Leads</div><div class="creative-stat-value">48</div></div>
+            <div><div class="creative-stat-label">CPL</div><div class="creative-stat-value">$7.11</div></div>
+          </div>
+        </div>
+        <div class="creative-links">
+          <a href="https://www.facebook.com/106396447369198/videos/1936205956927810" target="_blank" class="creative-link">▶ Video</a>
+          <a href="https://www.facebook.com/106396447369198/posts/1936205956927810" target="_blank" class="creative-link primary">Ver anuncio</a>
+        </div>
+      </div>
+
+      <div class="creative" style="border:1px solid var(--brand-2); box-shadow: 0 0 24px rgba(251,191,36,0.15);">
+        <div class="creative-media">
+          <span class="creative-badge" style="border-color:var(--brand-2); color:var(--brand-2)">⭐ Estrella</span>
+          <span class="creative-rank star">6</span>
+          <img src="assets/ads/ad6-wine-cream.jpg" alt="Wine & Cream Meeting - CostaSol" />
+        </div>
+        <div class="creative-body">
+          <div class="creative-name">Meeting - agosto - Copia (Wine & Cream)</div>
+          <div class="creative-copy">Tres días de Wine & Cream para conocer tu nueva casa en CostaSol. 8-9-10 de agosto. El anuncio con MEJOR CPL del mes.</div>
+          <div class="creative-stats">
+            <div><div class="creative-stat-label">Inv.</div><div class="creative-stat-value">$196</div></div>
+            <div><div class="creative-stat-label">Leads</div><div class="creative-stat-value">198</div></div>
+            <div><div class="creative-stat-label" style="color:var(--brand-2)">CPL ⭐</div><div class="creative-stat-value" style="color:var(--brand-2)">$0.99</div></div>
+          </div>
+        </div>
+        <div class="creative-links">
+          <a href="https://www.facebook.com/106396447369198/posts/1728546529274990" target="_blank" class="creative-link primary">Ver anuncio</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="audiencia">
+  <div class="container">
+    <div class="section-tag">// Quién nos vio, dónde y en qué placement</div>
+    <h2 class="section-title">Radiografía de la <span class="accent">audiencia Meta</span>.</h2>
+    <p class="section-sub">Datos de rendimiento agregados de las 9 campañas activas — leads y CPL por edad, género, provincia y placement.</p>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Leads por rango de edad</div>
+        <div class="chart-sub">65+ es el segmento con mayor volumen y mejor CPL</div>
+        <div class="chart-wrap"><canvas id="ageChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Distribución por género</div>
+        <div class="chart-sub">Mujeres 56% de leads · Hombres 44%</div>
+        <div class="chart-wrap"><canvas id="genderChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="charts-grid" style="margin-top:16px">
+      <div class="chart-card">
+        <div class="chart-title">Leads por provincia (top 5)</div>
+        <div class="chart-sub">Guayas domina (79%). Manabí sorpresa con CPL $1.35</div>
+        <div class="chart-wrap"><canvas id="regionChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Leads por placement (top 8)</div>
+        <div class="chart-sub">Audience Network entrega 36% de todos los leads</div>
+        <div class="chart-wrap"><canvas id="placementChart"></canvas></div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px">
+      <h3 class="chart-title" style="margin-bottom:16px">Detalle de placements — dónde vale más cada dólar</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Placement</th>
+            <th class="num">Inversión</th>
+            <th class="num">Impresiones</th>
+            <th class="num">Clics</th>
+            <th class="num">Leads</th>
+            <th class="num">CPL</th>
+            <th class="num">Eficiencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Audience Network</td><td class="num">$434</td><td class="num">52,639</td><td class="num">9,184</td><td class="num">344</td><td class="num">$1.26</td><td class="num"><span class="badge brand">Estrella</span></td></tr>
+          <tr><td class="name">Facebook Reels overlay</td><td class="num">$30</td><td class="num">75,588</td><td class="num">604</td><td class="num">25</td><td class="num">$1.22</td><td class="num"><span class="badge brand">Estrella</span></td></tr>
+          <tr><td class="name">Facebook Reels</td><td class="num">$1,128</td><td class="num">382,822</td><td class="num">8,054</td><td class="num">141</td><td class="num">$8.00</td><td class="num"><span class="badge good">Bien</span></td></tr>
+          <tr><td class="name">Facebook Feed</td><td class="num">$788</td><td class="num">334,263</td><td class="num">9,244</td><td class="num">137</td><td class="num">$5.75</td><td class="num"><span class="badge good">Bien</span></td></tr>
+          <tr><td class="name">Instagram Feed</td><td class="num">$1,843</td><td class="num">417,717</td><td class="num">4,841</td><td class="num">100</td><td class="num">$18.43</td><td class="num"><span class="badge bad">Caro</span></td></tr>
+          <tr><td class="name">Instagram Reels</td><td class="num">$1,130</td><td class="num">241,354</td><td class="num">3,606</td><td class="num">78</td><td class="num">$14.49</td><td class="num"><span class="badge warn">Caro</span></td></tr>
+          <tr><td class="name">Instagram Stories</td><td class="num">$896</td><td class="num">198,245</td><td class="num">3,231</td><td class="num">70</td><td class="num">$12.79</td><td class="num"><span class="badge warn">Iterar</span></td></tr>
+          <tr><td class="name">Facebook Stories</td><td class="num">$210</td><td class="num">42,514</td><td class="num">1,112</td><td class="num">38</td><td class="num">$5.53</td><td class="num"><span class="badge good">Bien</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-tag">// Embudo consolidado (Meta)</div>
+    <h2 class="section-title">De la impresión <span class="accent">al lead</span>.</h2>
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-step-label">Impresiones</div>
+        <div class="funnel-step-value">1,787,216</div>
+        <div class="funnel-step-conv">100%</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-label">Alcance (personas únicas)</div>
+        <div class="funnel-step-value">560,372</div>
+        <div class="funnel-step-conv">31.4%</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-label">Video views (25%+)</div>
+        <div class="funnel-step-value">197,493</div>
+        <div class="funnel-step-conv">11.1%</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-label">Clics totales</div>
+        <div class="funnel-step-value">40,365</div>
+        <div class="funnel-step-conv">2.26%</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-label">Visitas al landing (LPV)</div>
+        <div class="funnel-step-value">470</div>
+        <div class="funnel-step-conv">0.03%</div>
+      </div>
+      <div class="funnel-step" style="background:var(--brand-soft); border-color:var(--brand-1)">
+        <div class="funnel-step-label" style="color:var(--brand-1)">Leads generados</div>
+        <div class="funnel-step-value" style="color:var(--brand-1)">944</div>
+        <div class="funnel-step-conv">0.053%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recomendaciones">
+  <div class="container">
+    <div class="section-tag">// Próximos pasos</div>
+    <h2 class="section-title">Qué haremos <span class="accent">en septiembre</span>.</h2>
+    <div class="recs">
+      <div class="rec red">
+        <div class="rec-tag">Prioridad #1</div>
+        <div class="rec-title">Cerrar la brecha del funnel comercial</div>
+        <div class="rec-text">Leads (+15.7% sobre meta) sobran, pero P's del mes (53.8%), P. visitantes (74.4%) y primeras visitas (71.7%) están bajo. Trabajar con el equipo comercial en <strong style="color:var(--text)">tiempos de contacto</strong> (WhatsApp/llamada &lt; 5 min tras lead), calificación y agendamiento inmediato. Sin esto, subir presupuesto solo agrava el problema.</div>
+      </div>
+      <div class="rec yellow">
+        <div class="rec-tag">Calidad</div>
+        <div class="rec-title">Filtrar leads con formulario más específico</div>
+        <div class="rec-text">Añadir 1-2 preguntas cualificantes en el formulario de Meta (ej. "¿En qué tiempo planeas mudarte?" / "Rango de inversión") para reducir volumen pero aumentar tasa de agendamiento a visita.</div>
+      </div>
+      <div class="rec green">
+        <div class="rec-tag">Escalar</div>
+        <div class="rec-title">Duplicar presupuesto en Meeting_2026 (Wine & Cream)</div>
+        <div class="rec-text">CPL $1.49 con 463 leads en el mes. Es la campaña más eficiente del portafolio. Escalar de $689 a $1,400 en septiembre manteniendo estructura.</div>
+      </div>
+      <div class="rec green">
+        <div class="rec-tag">Escalar</div>
+        <div class="rec-title">Aumentar inversión en Audience Network</div>
+        <div class="rec-text">344 leads con solo $434 (CPL $1.26). Es el placement más rentable, pero apenas recibe 7% del presupuesto. Subirlo al 15-20% en placement selection.</div>
+      </div>
+      <div class="rec red">
+        <div class="rec-tag">Pausar</div>
+        <div class="rec-title">Campañas de WhatsApp (CPL $54-$78)</div>
+        <div class="rec-text">Las 2 campañas de WhatsApp consumieron $1,714 y solo trajeron 28 leads. El destino WhatsApp no está optimizado. Pausar y rediseñar el flujo antes de reactivar.</div>
+      </div>
+      <div class="rec yellow">
+        <div class="rec-tag">Iterar</div>
+        <div class="rec-title">Renovar creativo Martita - Copia 6</div>
+        <div class="rec-text">$498 gastados, solo 6 leads, CPL $82.99. El video no convierte al ratio del resto. Rehacer copy y thumbnail, mantener target.</div>
+      </div>
+      <div class="rec yellow">
+        <div class="rec-tag">Iterar</div>
+        <div class="rec-title">Bajar inversión en Instagram Feed / Reels</div>
+        <div class="rec-text">Instagram consume el 60% del presupuesto de placement y entrega solo 26% de los leads con CPL entre $12-$18. Redistribuir hacia Facebook Feed y Audience Network.</div>
+      </div>
+      <div class="rec green">
+        <div class="rec-tag">Explorar</div>
+        <div class="rec-title">Segmento 65+ y provincia Manabí</div>
+        <div class="rec-text">65+ trajo 305 leads (CPL $2.70) — más que 25-34 y 35-44 combinados. Manabí con $194 generó 144 leads (CPL $1.35). Crear campaña dedicada geo/edad para escalar ambos.</div>
+      </div>
+      <div class="rec yellow">
+        <div class="rec-tag">Google</div>
+        <div class="rec-title">Optimizar Search Casas — CPA $18.44</div>
+        <div class="rec-text">La keyword "casas en venta guayaquil" gasta $403 con CPA $21.24. Añadir negativas ("alquiler", "arriendo"), probar concordancia exacta en keywords marca y subir CPC en "urbanización costa sol" (CPA $0.86).</div>
+      </div>
+      <div class="rec yellow">
+        <div class="rec-tag">Competencia</div>
+        <div class="rec-title">Cerrar brecha vs casalaguna.com.ec</div>
+        <div class="rec-text">Casalaguna tiene 20.81% de cuota vs nuestro 11.95%. Aumentar puja en keywords compartidas y activar Display + YouTube (hoy pausados) para reforzar top-funnel.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/pra2media-color.png" alt="Pra2media" />
+        <span class="footer-brand-text">Reporte generado por <strong>Pra2media</strong></span>
+      </div>
+      <div class="footer-meta">Meta Marketing API + Google Ads Export · 01–31 Ago 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.channel-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const panel = tab.dataset.panel;
+      document.querySelectorAll('.channel-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.channel-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.channel-panel[data-panel="${panel}"]`).classList.add('active');
+    });
+  });
+
+  const brand1 = getComputedStyle(document.documentElement).getPropertyValue('--brand-1').trim();
+  const brand2 = getComputedStyle(document.documentElement).getPropertyValue('--brand-2').trim();
+  const brand3 = getComputedStyle(document.documentElement).getPropertyValue('--brand-3').trim();
+  const textDim = '#9a9aa8';
+  const border = '#23232f';
+
+  Chart.defaults.color = textDim;
+  Chart.defaults.font.family = 'JetBrains Mono, monospace';
+  Chart.defaults.font.size = 11;
+
+  // Age
+  new Chart(document.getElementById('ageChart'), {
+    type: 'bar',
+    data: {
+      labels: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+'],
+      datasets: [{
+        label: 'Leads',
+        data: [56, 178, 148, 115, 142, 305],
+        backgroundColor: (ctx) => ctx.dataIndex === 5 ? brand2 : brand1,
+        borderRadius: 6
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: border }, ticks: { color: textDim } },
+        y: { grid: { display: false }, ticks: { color: textDim } }
+      }
+    }
+  });
+
+  // Gender
+  new Chart(document.getElementById('genderChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Mujeres', 'Hombres', 'Sin datos'],
+      datasets: [{
+        data: [525, 415, 4],
+        backgroundColor: [brand1, brand2, '#3f4c65'],
+        borderColor: '#0a0a0f',
+        borderWidth: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '65%',
+      plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, padding: 14 } } }
+    }
+  });
+
+  // Region
+  new Chart(document.getElementById('regionChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Guayas', 'Manabí', 'Santa Elena', 'Los Ríos', 'Azuay'],
+      datasets: [{
+        label: 'Leads',
+        data: [746, 144, 15, 3, 1],
+        backgroundColor: [brand1, brand2, brand3, '#3f4c65', '#3f4c65'],
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: textDim } },
+        y: { grid: { color: border }, ticks: { color: textDim } }
+      }
+    }
+  });
+
+  // Placements
+  new Chart(document.getElementById('placementChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Audience Net.', 'FB Reels', 'FB Feed', 'IG Feed', 'IG Reels', 'IG Stories', 'FB Stories', 'FB Reels ov.'],
+      datasets: [
+        {
+          label: 'Leads',
+          data: [344, 141, 137, 100, 78, 70, 38, 25],
+          backgroundColor: brand1,
+          borderRadius: 6,
+          yAxisID: 'y'
+        },
+        {
+          label: 'CPL ($)',
+          data: [1.26, 8.00, 5.75, 18.43, 14.49, 12.79, 5.53, 1.22],
+          type: 'line',
+          borderColor: brand2,
+          backgroundColor: 'transparent',
+          tension: 0.35,
+          yAxisID: 'y1',
+          pointBackgroundColor: brand2,
+          pointRadius: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 6 } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: textDim, font: { size: 9 } } },
+        y: { position: 'left', grid: { color: border }, ticks: { color: textDim }, title: { display: true, text: 'Leads', color: textDim } },
+        y1: { position: 'right', grid: { display: false }, ticks: { color: textDim, callback: v => '$' + v }, title: { display: true, text: 'CPL', color: textDim } }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
